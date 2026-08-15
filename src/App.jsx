@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
 import LoginScreen from "./components/loginScreen";
-import AdminLayout from "./AdminLayout";
+import AdminLayout from "./adminLayout";
 import Home from "./pages/Admin/home";
 import Expenses from "./pages/Admin/expenses";
 import NewExpense from "./components/admin/Expenses/new-expense";
