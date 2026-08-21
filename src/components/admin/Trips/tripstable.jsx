@@ -20,9 +20,10 @@ import {
 
 import { Checkbox } from "@/components/ui/checkbox";
 import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 
 import { useNavigate } from "react-router-dom";
+
+const API_URL = `${import.meta.env.VITE_API_URL}/trips`;
 
 export default function TripsTable() {
     const navigate = useNavigate();
@@ -36,7 +37,7 @@ export default function TripsTable() {
             setLoading(true);
 
             const response = await fetch(
-                "http://localhost:3000/api/trips"
+                API_URL
             );
 
             const data = await response.json();
@@ -63,7 +64,7 @@ export default function TripsTable() {
     const handleStatusChange = async (id, status) => {
         try {
             const response = await fetch(
-                `http://localhost:3000/api/trips/${id}/status`,
+                `${API_URL}/${id}/status`,
                 {
                     method: "PATCH",
                     headers: {

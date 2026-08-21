@@ -8,6 +8,8 @@ import {
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
+const API_URL = `${import.meta.env.VITE_API_URL}/expenses`;
+
 export default function NewExpense() {
     const navigate = useNavigate();
     const fileInputRef = useRef(null);
@@ -72,7 +74,7 @@ export default function NewExpense() {
             setLoading(true);
 
             const response = await fetch(
-                "http://localhost:3000/api/expenses",
+                API_URL,
                 {
                     method: "POST",
                     headers: {

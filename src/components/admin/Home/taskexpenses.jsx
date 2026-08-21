@@ -14,35 +14,6 @@ import {
 } from "@/components/ui/card";
 
 import { Badge } from "@/components/ui/badge";
-import { useEffect, useState } from "react";
-
-// const pendingTasks = [
-//     {
-//         label: "Pending Approvals",
-//         value: "5",
-//         icon: Clock,
-//     },
-//     {
-//         label: "New Trips Registered",
-//         value: "1",
-//         icon: MapPin,
-//     },
-//     {
-//         label: "Unreported Expenses",
-//         value: "4",
-//         icon: ImageIcon,
-//     },
-//     {
-//         label: "Upcoming Expenses",
-//         value: "0",
-//         icon: Users,
-//     },
-//     {
-//         label: "Unreported Advances",
-//         value: "€0.00",
-//         icon: RefreshCcw,
-//     },
-// ];
 
 const teamBadgeStyles = {
     Marketing:

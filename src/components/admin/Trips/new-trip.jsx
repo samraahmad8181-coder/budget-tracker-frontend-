@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
+const API_URL = `${import.meta.env.VITE_API_URL}/trips`;
 export default function NewTrip() {
     const navigate = useNavigate();
 
@@ -12,7 +12,7 @@ export default function NewTrip() {
         report_name: "",
 
         flight_type: "Roundtrip",
-        depart_from: "",
+        depart_form: "",
         destination: "",
         start_date: "",
         end_date: "",
@@ -44,7 +44,7 @@ export default function NewTrip() {
             setLoading(true);
 
             const response = await fetch(
-                "http://localhost:3000/api/trips",
+                API_URL,
                 {
                     method: "POST",
                     headers: {
@@ -283,8 +283,8 @@ export default function NewTrip() {
 
                         <input
                             type="text"
-                            name="depart_from"
-                            value={formData.depart_from}
+                            name="depart_form"
+                            value={formData.depart_form}
                             onChange={handleChange}
                             required
                             placeholder="City / Airport"

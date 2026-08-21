@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { X } from "lucide-react";
-
+const API_URL = `${import.meta.env.VITE_API_URL}/trips`;
 export default function EditTripForm({
     trip,
     onCancel,
@@ -8,10 +8,10 @@ export default function EditTripForm({
 }) {
     const [formData, setFormData] = useState({
         name: trip.name || "",
-        trip_type: trip.category || "International",
+        category: trip.category || "International",
         purpose: trip.purpose || "",
         flight_type: trip.flight_type || "Roundtrip",
-        depart_from: trip.depart_from || "",
+        depart_form: trip.depart_form || "",
         destination: trip.destination || "",
         start_date: trip.start_date
             ? trip.start_date.split("T")[0]
@@ -19,7 +19,7 @@ export default function EditTripForm({
         end_date: trip.end_date
             ? trip.end_date.split("T")[0]
             : "",
-        spending_budget: trip.amount || "",
+        amount: trip.amount || "",
         check_in: trip.check_in
             ? trip.check_in.split("T")[0]
             : "",
@@ -53,7 +53,7 @@ export default function EditTripForm({
             setLoading(true);
 
             const response = await fetch(
-                `http://localhost:3000/api/trips/${trip.id}`,
+                `${API_URL}/${trip.id}`,
                 {
                     method: "PUT",
                     headers: {
@@ -144,7 +144,7 @@ export default function EditTripForm({
                             <label className="flex items-center gap-2 text-xs">
                                 <input
                                     type="radio"
-                                    name="trip_type"
+                                    name="category"
                                     value="Domestic"
                                     checked={
                                         formData.category === "Domestic"
@@ -158,7 +158,7 @@ export default function EditTripForm({
                             <label className="flex items-center gap-2 text-xs">
                                 <input
                                     type="radio"
-                                    name="trip_type"
+                                    name="category"
                                     value="International"
                                     checked={
                                         formData.category === "International"
@@ -272,8 +272,8 @@ export default function EditTripForm({
 
                             <input
                                 type="text"
-                                name="depart_from"
-                                value={formData.depart_from}
+                                name="depart_form"
+                                value={formData.depart_form}
                                 onChange={handleChange}
                                 required
                                 className="h-10 w-[250px] rounded-md bg-gray-100 dark:bg-[#3A3A3A] px-3 text-sm text-black dark:text-white outline-none focus:ring-1 focus:ring-[#00D5C8]"
@@ -334,7 +334,7 @@ export default function EditTripForm({
 
                         <input
                             type="number"
-                            name="spending_budget"
+                            name="amount"
                             value={formData.amount}
                             onChange={handleChange}
                             className="h-10 w-[300px] rounded-md bg-gray-100 dark:bg-[#3A3A3A] px-3 text-sm text-black dark:text-white outline-none focus:ring-1 focus:ring-[#00D5C8]"

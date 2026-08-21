@@ -3,7 +3,7 @@ import { User, Mail, Lock, LogOut, Sun, Moon, Trash2, Save, X } from "lucide-rea
 import { useNavigate } from "react-router-dom";
 import { useUser } from "@/context/userContext"; // adjust path to match your project structure
 
-const API_URL = "http://localhost:3000/api/auth";
+const API_URL = `${import.meta.env.VITE_API_URL}/auth`;
 
 export default function Settings() {
     const navigate = useNavigate();

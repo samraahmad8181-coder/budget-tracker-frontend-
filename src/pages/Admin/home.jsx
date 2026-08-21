@@ -3,6 +3,8 @@ import { TasksAndExpenses } from "@/components/admin/Home/taskexpenses";
 import { QuickAccess } from "@/components/admin/Home/quickCard";
 import { MonthlyReport } from "@/components/admin/Home/barCharts";
 
+const API_URL = `${import.meta.env.VITE_API_URL}/dashboard`;
+
 const Home = () => {
     const [dashboard, setDashboard] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -15,7 +17,7 @@ const Home = () => {
     const fetchDashboard = async () => {
         try {
             const response = await fetch(
-                "http://localhost:3000/api/dashboard"
+                API_URL
             );
 
             const result = await response.json();

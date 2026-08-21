@@ -10,7 +10,7 @@ import {
     Car,
     Plus,
 } from "lucide-react";
-
+const API_URL = `${import.meta.env.VITE_API_URL}/trips`;
 export default function TripDetails() {
     const { id } = useParams();
     const navigate = useNavigate();
@@ -24,7 +24,7 @@ export default function TripDetails() {
             setLoading(true);
 
             const response = await fetch(
-                `http://localhost:3000/api/trips/${id}`
+                `${API_URL}/${id}`
             );
 
             const data = await response.json();

@@ -26,6 +26,8 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useNavigate } from "react-router-dom";
 
+const API_URL = `${import.meta.env.VITE_API_URL}/expenses`;
+
 
 const getCategoryIcon = (category) => {
     switch (category) {
@@ -66,7 +68,7 @@ export default function ExpenseTable() {
             setError("");
 
             const response = await fetch(
-                "http://localhost:3000/api/expenses"
+                API_URL
             );
 
             const result = await response.json();
@@ -98,28 +100,26 @@ export default function ExpenseTable() {
 
     const handleStatusChange = async (expense, newStatus) => {
         try {
-            const response = await fetch(
-                `http://localhost:3000/api/expenses/${expense.id}`,
-                {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({
-                        subject: expense.subject,
-                        merchant: expense.merchant,
-                        expense_date: expense.expense_date,
-                        amount: expense.amount,
-                        currency: expense.currency,
-                        reimbursable: expense.reimbursable,
-                        category: expense.category,
-                        description: expense.description,
-                        employee: expense.employee,
-                        report_name: expense.report_name,
-                        status: newStatus,
-                        invoice_url: expense.invoice_url,
-                    }),
-                }
+            const response = await fetch(`${API_URL}/${expense.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    subject: expense.subject,
+                    merchant: expense.merchant,
+                    expense_date: expense.expense_date,
+                    amount: expense.amount,
+                    currency: expense.currency,
+                    reimbursable: expense.reimbursable,
+                    category: expense.category,
+                    description: expense.description,
+                    name: expense.name,
+                    report_name: expense.report_name,
+                    status: newStatus,
+                    invoice_url: expense.invoice_url,
+                }),
+            }
             );
 
             const result = await response.json();

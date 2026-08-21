@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Eye, Check, X, ChevronDown } from "lucide-react";
 import ApprovalDetail from "./approvaldetail";
 
-const API_URL = "http://localhost:3000/api/approvals";
+const API_URL = `${import.meta.env.VITE_API_URL}/approvals`;
 
 const frequencyOptions = [
     "Once",
